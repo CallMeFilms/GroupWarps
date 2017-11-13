@@ -1,0 +1,14 @@
+name: GroupWarps
+version: 1.0
+main: me.callmefilms.GroupWarps.GWFront
+author: CallMeFilms
+commands:
+ warp:
+  description: Warp to a warp of your choice
+  usage: /warp <name>
+ setwarp:
+  description: Set a warp at your position
+  usage: /setwarp <name>
+ delwarp:
+  description: Deletes the given warp
+  usage: /delwarp <name>
