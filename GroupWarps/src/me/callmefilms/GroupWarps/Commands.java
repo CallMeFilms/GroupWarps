@@ -71,7 +71,6 @@ public class Commands implements CommandExecutor {
 				} else {
 					String highest = getHighestGroup(player);
 					ConfigurationSection warps = warpsYAML.getConfigurationSection("Warps");
-					Set<String> warpNames = warps.getKeys(true);
 					Map<String, Object> warpInfo = new HashMap<String, Object>();
 					Location warpLoc = player.getLocation();
 					warpInfo.put("Group", highest);
@@ -82,17 +81,15 @@ public class Commands implements CommandExecutor {
 					warpInfo.put("Pitch", warpLoc.getPitch());
 					if(warps.contains(args[0])) {
 						WarpHandler.setExistWarp(args[0], highest, player.getLocation());
-						player.sendMessage(GWFront.putWithPrefix("Set warp at " + warpLoc.getX() + ", " + warpLoc.getY() + ", " + warpLoc.getZ()));
+						player.sendMessage(GWFront.putWithPrefix("Set warp " + ChatColor.GOLD + args[0] + ChatColor.YELLOW + " at " + warpLoc.getX() + ", " + warpLoc.getY() + ", " + warpLoc.getZ()));
 					} else {
 						int max = (int) groups.get(highest);
-						player.sendMessage("" + max);
-						player.sendMessage("" + warps.getKeys(false).size());
 						if(warps.getKeys(false).size() == max) {
 							player.sendMessage(GWFront.putWithPrefix("Your group can not add any more warps."));
 						} else {
 							warps.set(args[0], warpInfo);
 							WarpHandler.createWarp(args[0], highest, warpLoc);
-							player.sendMessage(GWFront.putWithPrefix("Set warp at " + warpLoc.getX() + ", " + warpLoc.getY() + ", " + warpLoc.getZ()));
+							player.sendMessage(GWFront.putWithPrefix("Set warp " + ChatColor.GOLD + args[0] + ChatColor.YELLOW + " at " + warpLoc.getX() + ", " + warpLoc.getY() + ", " + warpLoc.getZ()));
 						}
 					}
 				}
